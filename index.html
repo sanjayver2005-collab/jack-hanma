@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VÉLORA — Fashion Store</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+    WEAR A BETTER YOU
+</div>
+
+<!-- HEADER -->
+<header class="header">
+
+    <div class="logo">
+        VÉLORA
+    </div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#products">Shop</a>
+        <a href="#">Women</a>
+        <a href="#">Men</a>
+        <a href="#">Kids</a>
+        <a href="#">Sale</a>
+    </nav>
+
+    <div class="header-icons">
+        <button id="searchBtn">⌕</button>
+        <button>♡</button>
+
+        <button class="cart-btn" onclick="openCart()">
+            🛍
+            <span id="cartCount">0</span>
+        </button>
+    </div>
+
+</header>
+
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-content">
+        <p class="small-title">FASHION FOR A BRIGHTER YOU</p>
+
+        <h1>
+            Style<br>
+            Beyond<br>
+            <span>Trends.</span>
+        </h1>
+
+        <p class="hero-description">
+            Timeless pieces for a more confident you.
+        </p>
+
+        <div class="hero-buttons">
+            <button onclick="scrollProducts()">
+                Shop New Arrivals →
+            </button>
+
+            <button class="light-btn">
+                Explore Collections
+            </button>
+        </div>
+    </div>
+
+    <div class="hero-image hero-image-one"></div>
+    <div class="hero-image hero-image-two"></div>
+
+</section>
+
+
+<!-- FEATURES -->
+<section class="features">
+
+    <div>
+        ◇ <b>Premium</b> Quality
+    </div>
+
+    <div>
+        ♧ <b>Sustainable</b> Fashion
+    </div>
+
+    <div>
+        ▣ <b>Fast & Reliable</b> Delivery
+    </div>
+
+    <div>
+        ⟳ <b>Easy</b> Returns
+    </div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+<section class="categories">
+
+    <div class="category active" onclick="filterProducts('All')">
+        <div class="category-img">ALL</div>
+        <span>All</span>
+    </div>
+
+    <div class="category" onclick="filterProducts('Men')">
+        <div class="category-img">
+            <img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?auto=format&fit=crop&w=300&q=80">
+        </div>
+        <span>Men</span>
+    </div>
+
+    <div class="category" onclick="filterProducts('Women')">
+        <div class="category-img">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=300&q=80">
+        </div>
+        <span>Women</span>
+    </div>
+
+    <div class="category" onclick="filterProducts('Kids')">
+        <div class="category-img">
+            <img src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=300&q=80">
+        </div>
+        <span>Kids</span>
+    </div>
+
+    <div class="category" onclick="filterProducts('Activewear')">
+        <div class="category-img">
+            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=300&q=80">
+        </div>
+        <span>Activewear</span>
+    </div>
+
+    <div class="category" onclick="filterProducts('Denim')">
+        <div class="category-img">
+            <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=300&q=80">
+        </div>
+        <span>Denim</span>
+    </div>
+
+    <div class="category" onclick="filterProducts('Accessories')">
+        <div class="category-img">
+            <img src="https://images.unsplash.com/photo-1523779917675-b6ed3a42a561?auto=format&fit=crop&w=300&q=80">
+        </div>
+        <span>Accessories</span>
+    </div>
+
+    <div class="category sale" onclick="filterProducts('Sale')">
+        SALE
+        <span>Offers</span>
+    </div>
+
+</section>
+
+
+<!-- PRODUCTS HEADER -->
+<section class="products-heading" id="products">
+
+    <div>
+        <p>FRESH COLLECTION</p>
+        <h2>New Arrivals</h2>
+        <span>Fresh styles for your everyday look.</span>
+    </div>
+
+    <div class="product-tools">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search products..."
+        >
+
+        <select id="sortProducts">
+            <option value="default">Sort By</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+        </select>
+
+    </div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+<section class="product-section">
+
+    <div id="productGrid" class="product-grid"></div>
+
+</section>
+
+
+<!-- PROMO BANNERS -->
+<section class="promo-section">
+
+    <div class="promo sustainable">
+        <div>
+            <small>BETTER FASHION</small>
+            <h2>Sustainable<br>Style</h2>
+            <p>A greener tomorrow.</p>
+            <button>Shop Sustainable →</button>
+        </div>
+    </div>
+
+    <div class="promo discount">
+        <div>
+            <small>LIMITED TIME OFFER</small>
+            <h2>Flat 50% OFF</h2>
+            <p>On selected styles</p>
+            <button>Shop Now →</button>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- WHY US -->
+<section class="why-us">
+
+    <h2>Why Choose VÉLORA?</h2>
+
+    <div class="why-grid">
+
+        <div>
+            <strong>◇</strong>
+            <b>Premium</b>
+            <span>Quality</span>
+        </div>
+
+        <div>
+            <strong>♧</strong>
+            <b>Sustainable</b>
+            <span>Fashion</span>
+        </div>
+
+        <div>
+            <strong>☆</strong>
+            <b>Trendy</b>
+            <span>Styles</span>
+        </div>
+
+        <div>
+            <strong>▣</strong>
+            <b>Fast & Reliable</b>
+            <span>Delivery</span>
+        </div>
+
+        <div>
+            <strong>⟳</strong>
+            <b>Easy</b>
+            <span>Returns</span>
+        </div>
+
+        <div>
+            <strong>♡</strong>
+            <b>Loved by</b>
+            <span>Customers</span>
+        </div>
+
+        <div class="quote">
+            “Fashion is not just<br>
+            what you wear, but how<br>
+            <i>you feel.</i>”
+            <small>— VÉLORA</small>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CART SIDEBAR -->
+<div id="cartOverlay" class="cart-overlay" onclick="closeCart()"></div>
+
+<div id="cartSidebar" class="cart-sidebar">
+
+    <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button onclick="closeCart()">×</button>
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div class="cart-bottom">
+
+        <div class="cart-total">
+            <span>Total</span>
+            <strong>₹<span id="cartTotal">0</span></strong>
+        </div>
+
+        <button class="checkout-btn">
+            Proceed to Checkout →
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <div>
+        <h2>VÉLORA</h2>
+        <p>Style beyond trends.</p>
+    </div>
+
+    <div>
+        <h4>SHOP</h4>
+        <a href="#">Women</a>
+        <a href="#">Men</a>
+        <a href="#">Kids</a>
+        <a href="#">Sale</a>
+    </div>
+
+    <div>
+        <h4>HELP</h4>
+        <a href="#">Contact Us</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+        <a href="#">FAQs</a>
+    </div>
+
+    <div>
+        <h4>FOLLOW</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">Pinterest</a>
+    </div>
+
+</footer>
+
+<div class="copyright">
+    © 2026 VÉLORA. All Rights Reserved.
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
+<!-- CHECKOUT MODAL -->
+<div id="checkoutOverlay" class="checkout-overlay">
+
+    <div class="checkout-modal">
+
+        <button class="checkout-close" onclick="closeCheckout()">×</button>
+
+        <div class="checkout-title">
+            <p>VÉLORA</p>
+            <h2>Order Details</h2>
+            <span>Please enter your delivery information.</span>
+        </div>
+
+        <form id="checkoutForm">
+
+            <h3>Personal Information</h3>
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input
+                        type="text"
+                        id="customerName"
+                        placeholder="Enter your full name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Mobile Number *</label>
+                    <input
+                        type="tel"
+                        id="customerPhone"
+                        placeholder="10 digit mobile number"
+                        pattern="[0-9]{10}"
+                        maxlength="10"
+                        required
+                    >
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Email Address *</label>
+
+                <input
+                    type="email"
+                    id="customerEmail"
+                    placeholder="example@gmail.com"
+                    required
+                >
+
+            </div>
+
+
+            <h3>Delivery Address</h3>
+
+            <div class="form-group">
+
+                <label>House / Flat / Building *</label>
+
+                <input
+                    type="text"
+                    id="customerHouse"
+                    placeholder="House no. / Flat no. / Building"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Street / Area *</label>
+
+                <input
+                    type="text"
+                    id="customerArea"
+                    placeholder="Street, locality or area"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>City *</label>
+
+                    <input
+                        type="text"
+                        id="customerCity"
+                        placeholder="City"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>State *</label>
+
+                    <select id="customerState" required>
+
+                        <option value="">Select State</option>
+
+                        <option>Andhra Pradesh</option>
+                        <option>Delhi</option>
+                        <option>Gujarat</option>
+                        <option>Haryana</option>
+                        <option>Karnataka</option>
+                        <option>Kerala</option>
+                        <option>Madhya Pradesh</option>
+                        <option>Maharashtra</option>
+                        <option>Punjab</option>
+                        <option>Rajasthan</option>
+                        <option>Tamil Nadu</option>
+                        <option>Telangana</option>
+                        <option>Uttar Pradesh</option>
+                        <option>West Bengal</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Pincode *</label>
+
+                    <input
+                        type="text"
+                        id="customerPincode"
+                        placeholder="6 digit pincode"
+                        pattern="[0-9]{6}"
+                        maxlength="6"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <h3>Payment Method</h3>
+
+            <div class="payment-options">
+
+                <label class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="Cash on Delivery"
+                        checked
+                    >
+
+                    <span>
+                        <b>Cash on Delivery</b>
+                        <small>Pay when your order arrives</small>
+                    </span>
+
+                </label>
+
+
+                <label class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="UPI"
+                    >
+
+                    <span>
+                        <b>UPI</b>
+                        <small>Pay using UPI</small>
+                    </span>
+
+                </label>
+
+
+                <label class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="Card"
+                    >
+
+                    <span>
+                        <b>Credit / Debit Card</b>
+                        <small>Secure card payment</small>
+                    </span>
+
+                </label>
+
+            </div>
+
+
+            <div class="checkout-summary">
+
+                <div>
+                    <span>Items</span>
+                    <strong id="checkoutItems">0</strong>
+                </div>
+
+                <div>
+                    <span>Delivery</span>
+                    <strong>FREE</strong>
+                </div>
+
+                <div class="checkout-total">
+
+                    <span>Total</span>
+
+                    <strong>
+                        ₹<span id="checkoutTotal">0</span>
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="place-order-btn"
+            >
+                Place Order →
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ORDER SUCCESS -->
+<div id="successOverlay" class="success-overlay">
+
+    <div class="success-box">
+
+        <div class="success-icon">✓</div>
+
+        <h2>Order Placed!</h2>
+
+        <p>
+            Thank you for shopping with VÉLORA.
+        </p>
+
+        <p class="order-number">
+            Order ID:
+            <strong id="orderNumber"></strong>
+        </p>
+
+        <button onclick="closeSuccess()">
+            Continue Shopping
+        </button>
+
+    </div>
+
+</div>
